@@ -1,0 +1,87 @@
+$footer-bg-color: #15151e;
+$footer-color: #fdfdfd;
+$font-source-sans: 'Source Sans Pro', sans-serif;
+$font-Playfair: 'Playfair Display', serif;
+$hover-green: #6fb586;
+
+@import './mixin';
+
+footer {
+    background-color: $footer-bg-color;
+    color: $footer-color;
+    @include font-settings($font-size: 16px);
+}
+.footer-widgets{
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logo img{
+        width: 120px;
+        height: auto;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        
+        &#{"__child"} {
+            display: flex;
+            align-items: center;
+            border-color: rgba(253,253,253,0.1);
+        }
+
+        .icon {
+            padding: 15px;
+            margin-right: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.377);
+            border-radius: 50%;
+            &.fa-location-arrow:hover {
+                cursor: pointer;
+                background-color: $hover-green;
+            }
+        }
+    }
+
+    .skype-link {
+        color: rgba(255, 255, 255, 0.377);
+        margin-top: 30px;
+    }
+}
+
+.footer-bar {
+    padding: 5px;
+    @include font-settings(12px, $font-source-sans, 200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include respond("tablet") {
+        flex-direction: column;
+    }
+    > div {
+        flex-basis: 33%;
+    }
+    .logo {
+        text-align: center;
+        img{
+            width: 120px;
+            height: auto;
+        }
+    }
+    .footer-menu ul{
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        @include respond("tablet") {
+            text-align: center;
+        }
+        li:hover {
+            color: $hover-green;
+        }
+    }
+}

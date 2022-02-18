@@ -1,0 +1,292 @@
+$white-color: white;
+$black-color: black;
+$green: #6fb586;
+$menu-font: 'Source Sans Pro', sans-serif;
+$seperator-color: rgba(221,221,221,0.4);
+$book-now-button: #c5bc58;
+
+@import './mixin';
+
+ul li {
+    list-style-type: none;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.menu.container {
+    font-family: $menu-font;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: rgba($color: $black-color, $alpha: 0.6);
+    color: $white-color;
+    transition: all 0.5s ease-in-out;
+
+    &.move{
+        transform: translateX(-320px);
+    }
+
+    .logo  {
+        margin-left: 20px;
+        img {
+            width: 100px;
+            height: 50px;
+        }
+    }
+    .main-navbar-items {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        display: flex;
+        gap: 2rem;
+        @include respond("extra") {
+            padding: 1px;
+            gap: 0.5rem;
+        }
+        @include respond("desktop") {
+            display: none;
+        }
+        li {
+            @include respond("desktop") {
+                padding: 1px 10px;
+            }
+            padding: 5px 10px;
+            position: relative;
+        }
+    }
+
+    .navbar-tools {
+        position: absolute;
+        right: 0;
+        display: flex;
+        align-items: center;
+
+        .book {
+            position: relative;
+            z-index: 10;
+            background-color: $book-now-button;
+            @include overlay-button-hover-first ($white-color, $book-now-button);
+            margin-right: 15px;
+            padding: 8px 24px;
+        }
+    }
+}
+
+.sidebar-toggler {
+    margin-left: 15px;
+    padding: 8px 20px;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+    .sidebar-toggler__burger {
+        position: relative;
+        width: 20px;
+        height: 1px;
+        background-color: $white-color;
+        border-radius: 2px;
+        transition: all ease-in-out 0.5s;
+        &::after, &::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 1px;
+            background-color: $white-color;
+            border-radius: 2px;
+            transition: all ease-in-out 0.5s;
+        }
+        &::before {
+            transform: translateY(-6px);
+        }
+        &::after {
+            transform: translateY(6px);
+        }
+    }
+}
+
+
+.sidebar-menu {
+    font-family: $menu-font;
+    font-size: 14;
+    color: $white-color;
+    background-color: $black-color;
+    padding: 20px 25px 0 25px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 7;
+    transform: translateX(100%);
+    width: 320px;
+    height: 100%;
+    overflow: auto;
+    transition: all 0.5s ease-in-out;
+    .secondary-navbar-items.container {
+        display: none;
+        @include respond("desktop") {
+            display: block;
+        }
+    }
+}
+
+.sidebar-items {
+    font-weight: 500;
+    .sidebar-item {
+        margin-bottom: 10px;
+        ul {
+            margin: 15px 0;
+            font-size: 12px;
+            padding-left: 20px;
+            border-left: solid 2px $white-color;
+            li {
+                margin: 15px 0;
+            }
+        }
+    }
+}
+
+.sidebar.seperator {
+    position: relative;
+    background-color: $seperator-color;
+    height: 1px;
+    width: 100%;
+    margin: 28px 0;
+}
+
+.sidebar-contact-info {
+    font-size: 13px;
+    font-weight: 200;
+    margin: 20px 0;
+    .contact-info {
+        font-size: 16px;
+        margin: 10px;
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
+        &.email a{
+            text-decoration: none;
+            color: $green;
+        }
+    }
+    & * {
+        margin: 10px 0;
+    }
+}
+
+// hover effect 
+.main-navbar-items li {
+
+    // green line appearance after hovering
+    position: relative;
+    &::after{
+        @include green-line-hover;
+    }
+    &.underlined::after {
+        transition: none;
+        width: 100%;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+
+    // triangle sign appearance after hovering
+    .arrow-down {
+        border: solid $white-color;
+        border-width: 0 2px 2px 0;
+        display: none;
+        padding: 2px;
+        transform: translate(150%, 100%) rotate(45deg);
+        -webkit-transform: translate(150%, 100%) rotate(45deg);
+        position: absolute;
+    }
+    &#home-item:hover, &#more-item:hover {
+        .arrow-down {
+            display: inline-block;
+        }
+    }
+}
+
+// hover on sidebar menu items
+.sidebar-item a {
+    position: relative;
+    &::after {
+        @include green-line-hover;
+        transition: width 0.2s ease-out;
+    }
+    &:hover::after {
+        width: 100%;;
+    }
+    &.underlined::after {
+        transition: none;
+        width: 100%;
+    }
+}
+
+// drop-down menu
+.dropdown-owner {
+    position: relative;
+    .dropdown {
+        position: absolute;
+        z-index: 10;
+        display: none;
+        top: 30px;
+        left: 0;
+        background-color: $black-color;
+        min-width: 150px;
+        li {
+            white-space: nowrap;
+            margin: 20px 20px;
+            a {
+                display: inline-block;
+            }
+        }
+    }
+
+    &:hover .dropdown, .arrow-down:hover .dropdown, .dropdown:hover {
+        display: block;
+    }
+}
+
+
+// animation for sidebar toggler button and menu
+.sidebar-toggler.open {
+    transform: translateX(100%);
+    background-color: $black-color;
+}
+
+.sidebar-toggler.open .sidebar-toggler__burger {
+    transform: translateX(-20px);
+    background: transparent;
+    &::after {
+        transform: rotate(-45deg) translate(15px, 15px);
+    }
+    &::before {
+        transform: rotate(45deg) translate(15px, -15px);
+    }
+}
+
+// open sidebar menu
+.sidebar-menu.open {
+    padding-top: 90px;
+    transform: translateX(0);
+}
+
+.main-content {
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    &.move {
+        transform: translate(-320px);
+    }
+}

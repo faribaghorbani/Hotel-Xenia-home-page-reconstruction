@@ -1,0 +1,104 @@
+$white-color: white;
+$black-color: black;
+$light-color: #f4f4f4;
+$font-source-sans: 'Source Sans Pro', sans-serif;
+$font-Playfair: 'Playfair Display', serif;
+
+@import './mixin';
+
+.testimonials {
+    padding-top: 50px; padding-bottom: 50px;
+    background-color: $light-color;
+}
+.testimonials__description {
+    margin-bottom: 30px;
+    text-align: center;
+    .title {
+        @include font-settings(40px, $font-Playfair, 700);
+    }
+    .subtitle {
+        @include font-settings(13px, $font-source-sans, 300);
+    }
+    svg {
+        margin: 20px;
+    }
+}
+.third-carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .slider {
+        width: 60%;
+    }
+
+    .wrapper {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+    
+    .slides {
+        display: flex;
+        position: relative;
+        top: 0;
+        left: -100%;
+    }
+    
+    .slides.shifting {
+        transition: left .2s ease-out;
+    }
+    
+    .slide {
+        position: relative;
+        flex-basis: 100%;
+        flex-shrink: 0;
+        display: flex;
+        gap: 4rem;
+        justify-content: center;
+        transition: all 0.5s;
+        @include respond("tablet") {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar {
+            
+            img {
+                border-radius: 50%;
+                width: 100px;
+                height: auto;
+            }
+        }
+        .quote {
+            h4 {
+                @include font-settings(19px, $font-Playfair, 700);
+            }
+            p {
+                @include font-settings(18px, $font-Playfair, 200);
+            }
+        }
+    }
+    
+    .indicators {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    
+        .indicators__dot span {
+            margin: 5px 7px;
+            display: block;
+            width: 10px; height: 10px;
+            background-color: $indicator-dots;
+            border-radius: 50%;
+    
+            &:hover {
+                cursor: pointer;
+                background-color: $indicator-dots-selected;
+            }
+        }
+    }
+}

@@ -1,0 +1,196 @@
+$black-color: black;
+$light-color: #f4f4f4;
+$dark-color: #111118;
+$dark-font-color: #323232;
+$font-source-sans: 'Source Sans Pro', sans-serif;
+$font-Playfair: 'Playfair Display', serif;
+
+@import './mixin';
+
+.reservation.container {
+    @include font-settings();
+    background-color: $light-color;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+// hotel introduction
+.reservation__description {
+    width: 100%;
+    max-width: 700px;
+    color: $dark-font-color;
+    margin: 0px 30px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .welcome {
+        margin: 30px 0;
+        position: relative;
+        &::before {
+            content: "WELCOME";
+            @include font-settings(150px, $font-Playfair, 500);
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            @include respond("desktop") {
+                display: none;
+            }
+        }
+        .welcome-title {
+            @include font-settings(36px, $font-Playfair, 700)
+        }
+        .welcome-small-title {
+            display: block;
+            @include font-settings(13px, $font-source-sans, 300)
+        }
+    }
+
+    .svg_divider {
+        margin: 10px 0;
+    }
+    .description {
+        &#{"-title"} {
+            @include font-settings(19px, $font-Playfair, 700);
+            margin: 27px 0 13px;
+        }
+        &#{"-p"} {
+            margin-bottom: 20px;
+        }
+    }
+    .avatar {
+        img {
+            height: auto;
+            border-radius: 50%;
+        }
+        &#{"-intro"} {
+            margin: 10px;
+        }
+    }
+}
+
+
+// cards
+.reservation__cards {
+    background-color: transparent;
+    max-width: 1200px;
+    display: flex;
+    gap: 2rem;
+    @include respond("tablet") {
+        flex-direction: column;
+    }
+
+    .card {
+        color: white;
+        text-align: left;
+        position: relative;
+        margin: 5px;
+        flex-basis: 100%;
+        cursor: pointer;
+        transition: all 0.001s ease-out;
+
+        .logo {
+            position: absolute;
+            z-index: 5;
+            top: 20px; left: 20px;
+            width: 120px;
+            max-width: 100%;
+            height: auto;
+        }
+        .banner {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+    }
+
+    // hover overlay effect
+    
+    .card {
+        .hoverbox-title {
+            @include font-settings(20px, $font-Playfair, 700);
+            white-space: nowrap;
+            position: absolute;
+            z-index: 5;
+            bottom: 20px; left: 20px;
+            max-width: 100%;
+            height: auto;
+            transition: 200ms ease;
+        }
+        .hoverbox-overlay {
+            position: absolute;
+            opacity: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba($color: #000000, $alpha: .5);
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: height 300ms ease;
+        }
+        .hoverbox-overlay p {
+            margin: 20px;
+            position: absolute;
+            top: 90%;
+            left: 0;
+            -webkit-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+        &:hover .hoverbox-overlay {
+            height: 100%;
+            opacity: 1;
+        }
+        &:hover .hoverbox-title {
+            bottom: 70px;
+            opacity: 0;
+        }
+    }
+}
+
+.reservation__bottom-container {
+    width: 100%;
+    position: relative;
+}
+
+.reservation__bottom {
+    width: 100%;
+    background-position: center center;
+    background-image: 
+    linear-gradient(to top, rgba(255, 255, 255, 0), rgb(244, 244, 244)),
+    url(./../Photos/reservation/home-banner-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 90px 20px;
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &#{"-title"} {
+            margin-top: 50px;
+            @include font-settings(36px, $font-Playfair, 700);
+        }
+        .svg_divider {
+            margin: 20px 0;
+        }
+        &#{"-p"} {
+            @include font-settings();
+            margin-bottom: 24px;
+        }
+    }
+    .overlay-button {
+        @include overlay-button-hover-second($black-color, transparent, $white-color);
+        button {
+            padding: 8px 24px;
+        }
+    }
+}

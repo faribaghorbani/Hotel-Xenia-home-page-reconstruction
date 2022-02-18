@@ -1,0 +1,1164 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap");
+*, *::after, *::before {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu.container {
+  font-family: "Source Sans Pro", sans-serif;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+.menu.container.move {
+  transform: translateX(-320px);
+}
+.menu.container .logo {
+  margin-left: 20px;
+}
+.menu.container .logo img {
+  width: 100px;
+  height: 50px;
+}
+.menu.container .main-navbar-items {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  display: flex;
+  gap: 2rem;
+}
+@media only screen and (max-width: 1200px) {
+  .menu.container .main-navbar-items {
+    padding: 1px;
+    gap: 0.5rem;
+  }
+}
+@media only screen and (max-width: 1025px) {
+  .menu.container .main-navbar-items {
+    display: none;
+  }
+}
+.menu.container .main-navbar-items li {
+  padding: 5px 10px;
+  position: relative;
+}
+@media only screen and (max-width: 1025px) {
+  .menu.container .main-navbar-items li {
+    padding: 1px 10px;
+  }
+}
+.menu.container .navbar-tools {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+.menu.container .navbar-tools .book {
+  position: relative;
+  z-index: 10;
+  background-color: #c5bc58;
+  cursor: pointer;
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top, white 50%, #c5bc58 50%);
+  color: white;
+  border: 1px solid #c5bc58;
+  transition: background-position 500ms;
+  margin-right: 15px;
+  padding: 8px 24px;
+}
+.menu.container .navbar-tools .book:hover {
+  color: #c5bc58;
+  background-position: 0 100%;
+}
+
+.sidebar-toggler {
+  margin-left: 15px;
+  padding: 8px 20px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.sidebar-toggler .sidebar-toggler__burger {
+  position: relative;
+  width: 20px;
+  height: 1px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all ease-in-out 0.5s;
+}
+.sidebar-toggler .sidebar-toggler__burger::after, .sidebar-toggler .sidebar-toggler__burger::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all ease-in-out 0.5s;
+}
+.sidebar-toggler .sidebar-toggler__burger::before {
+  transform: translateY(-6px);
+}
+.sidebar-toggler .sidebar-toggler__burger::after {
+  transform: translateY(6px);
+}
+
+.sidebar-menu {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14;
+  color: white;
+  background-color: black;
+  padding: 20px 25px 0 25px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 7;
+  transform: translateX(100%);
+  width: 320px;
+  height: 100%;
+  overflow: auto;
+  transition: all 0.5s ease-in-out;
+}
+.sidebar-menu .secondary-navbar-items.container {
+  display: none;
+}
+@media only screen and (max-width: 1025px) {
+  .sidebar-menu .secondary-navbar-items.container {
+    display: block;
+  }
+}
+
+.sidebar-items {
+  font-weight: 500;
+}
+.sidebar-items .sidebar-item {
+  margin-bottom: 10px;
+}
+.sidebar-items .sidebar-item ul {
+  margin: 15px 0;
+  font-size: 12px;
+  padding-left: 20px;
+  border-left: solid 2px white;
+}
+.sidebar-items .sidebar-item ul li {
+  margin: 15px 0;
+}
+
+.sidebar.seperator {
+  position: relative;
+  background-color: rgba(221, 221, 221, 0.4);
+  height: 1px;
+  width: 100%;
+  margin: 28px 0;
+}
+
+.sidebar-contact-info {
+  font-size: 13px;
+  font-weight: 200;
+  margin: 20px 0;
+}
+.sidebar-contact-info .contact-info {
+  font-size: 16px;
+  margin: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.sidebar-contact-info .contact-info.email a {
+  text-decoration: none;
+  color: #6fb586;
+}
+.sidebar-contact-info * {
+  margin: 10px 0;
+}
+
+.main-navbar-items li {
+  position: relative;
+}
+.main-navbar-items li::after {
+  content: "";
+  position: absolute;
+  background-color: #6fb586;
+  height: 1px;
+  width: 0;
+  border-radius: 1px;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.5s ease-out;
+}
+.main-navbar-items li.underlined::after {
+  transition: none;
+  width: 100%;
+}
+.main-navbar-items li:hover::after {
+  width: 100%;
+}
+.main-navbar-items li .arrow-down {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: none;
+  padding: 2px;
+  transform: translate(150%, 100%) rotate(45deg);
+  -webkit-transform: translate(150%, 100%) rotate(45deg);
+  position: absolute;
+}
+.main-navbar-items li#home-item:hover .arrow-down, .main-navbar-items li#more-item:hover .arrow-down {
+  display: inline-block;
+}
+
+.sidebar-item a {
+  position: relative;
+}
+.sidebar-item a::after {
+  content: "";
+  position: absolute;
+  background-color: #6fb586;
+  height: 1px;
+  width: 0;
+  border-radius: 1px;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.5s ease-out;
+  transition: width 0.2s ease-out;
+}
+.sidebar-item a:hover::after {
+  width: 100%;
+}
+.sidebar-item a.underlined::after {
+  transition: none;
+  width: 100%;
+}
+
+.dropdown-owner {
+  position: relative;
+}
+.dropdown-owner .dropdown {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  top: 30px;
+  left: 0;
+  background-color: black;
+  min-width: 150px;
+}
+.dropdown-owner .dropdown li {
+  white-space: nowrap;
+  margin: 20px 20px;
+}
+.dropdown-owner .dropdown li a {
+  display: inline-block;
+}
+.dropdown-owner:hover .dropdown, .dropdown-owner .arrow-down:hover .dropdown, .dropdown-owner .dropdown:hover {
+  display: block;
+}
+
+.sidebar-toggler.open {
+  transform: translateX(100%);
+  background-color: black;
+}
+
+.sidebar-toggler.open .sidebar-toggler__burger {
+  transform: translateX(-20px);
+  background: transparent;
+}
+.sidebar-toggler.open .sidebar-toggler__burger::after {
+  transform: rotate(-45deg) translate(15px, 15px);
+}
+.sidebar-toggler.open .sidebar-toggler__burger::before {
+  transform: rotate(45deg) translate(15px, -15px);
+}
+
+.sidebar-menu.open {
+  padding-top: 90px;
+  transform: translateX(0);
+}
+
+.main-content {
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+.main-content.move {
+  transform: translate(-320px);
+}
+
+.first-carousel {
+  position: relative;
+  z-index: 0;
+}
+.first-carousel.slider {
+  width: 100%;
+  height: 75vw;
+  max-height: 95vh;
+  min-height: 400px;
+}
+.first-carousel .wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.first-carousel .slides {
+  position: relative;
+  display: flex;
+  height: 100%;
+  top: 0;
+  left: -100%;
+}
+.first-carousel .slides.shifting {
+  transition: left 0.2s ease-out;
+}
+.first-carousel .slide {
+  position: relative;
+  height: 100%;
+  flex-basis: 100%;
+  flex-shrink: 0;
+  transition: transform 500ms;
+}
+.first-carousel .slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.first-carousel .slide .slide-info {
+  opacity: 0;
+  pointer-events: none;
+  font-size: 2rem;
+  text-align: center;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.first-carousel .control-arrows * {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.first-carousel .control-arrows *:hover {
+  opacity: 1;
+}
+.first-carousel .control-arrows #left-arrow {
+  left: 0;
+}
+.first-carousel .control-arrows #right-arrow {
+  right: 0;
+}
+
+.first-carousel .slide-info {
+  color: white;
+}
+.first-carousel .slide-info .t2 {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+@media only screen and (max-width: 769px) {
+  .first-carousel .slide-info .t2 {
+    font-family: "Playfair Display", serif;
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+.first-carousel .slide-info .t1 {
+  font-family: "Playfair Display", serif;
+  font-size: 64px;
+  font-weight: 700;
+}
+@media only screen and (max-width: 769px) {
+  .first-carousel .slide-info .t1 {
+    font-family: "Playfair Display", serif;
+    font-size: 46px;
+    font-weight: 700;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .first-carousel .slide-info .t1 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    font-weight: 700;
+  }
+}
+.first-carousel .slide-info .overlay-button {
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 8px 24px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+}
+
+.reservation__check-in {
+  color: white;
+  position: relative;
+  padding: 40px 40px;
+  top: -50px;
+  z-index: 6;
+  background-color: #111118;
+  width: 100%;
+  max-width: 1200px;
+}
+@media only screen and (max-width: 1025px) {
+  .reservation__check-in {
+    padding: 40px 0;
+  }
+}
+
+#form {
+  text-align: center;
+}
+#form .direct-div {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 1025px) {
+  #form .direct-div {
+    flex-direction: column;
+  }
+}
+#form .inputbox {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40%;
+}
+@media only screen and (max-width: 1025px) {
+  #form .inputbox {
+    flex-shrink: 0;
+    flex-basis: 100%;
+  }
+}
+#form .inputbox label {
+  margin-bottom: 10px;
+}
+#form .inputbox input {
+  color: white;
+  padding: 28px 24px;
+  border: 2px solid #1F1F2C;
+  background-color: #1F1F2C;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+#form .error {
+  display: none;
+  color: #f75b5b;
+  margin-top: 20px;
+}
+#form .overlay-button {
+  margin: 50px 0 10px;
+  position: relative;
+  display: inline-block;
+}
+#form .overlay-button button {
+  cursor: pointer;
+  color: #6fb586;
+  border: 1px solid #6fb586;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s;
+}
+#form .overlay-button button:hover {
+  color: white;
+}
+#form .overlay-button div {
+  background-color: #6fb586;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  transition: all 0.5s;
+}
+#form .overlay-button:hover div {
+  height: 100%;
+}
+#form #submit {
+  padding: 12px 32px;
+}
+
+.modal-container {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16;
+  font-weight: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease;
+}
+.modal-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  color: black;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  background-color: white;
+  width: 600px;
+  max-width: 90%;
+}
+.modal-content .modal-header {
+  display: flex;
+  padding: 15px 10px;
+  justify-content: space-between;
+}
+.modal-content .modal-body {
+  padding: 25px 20px;
+}
+.modal-content hr {
+  border: none;
+  height: 1px;
+  background-color: #e4e4e4;
+}
+.modal-content .close-button {
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+.modal-content .close-button::before, .modal-content .close-button::after {
+  content: "";
+  position: absolute;
+  background-color: #666666;
+  width: 1.3px;
+  height: 1.5rem;
+  left: 50%;
+  top: 50%;
+}
+.modal-content .close-button::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.modal-content .close-button::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.modal-content .close-button:hover::before, .modal-content .close-button:hover::after {
+  background-color: #323232;
+}
+
+.modal #rooms-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.modal #rooms-table td, .modal #rooms-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.modal #rooms-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #111118;
+  color: white;
+}
+.modal #rooms-table tr.available {
+  color: white !important;
+  background-color: #6fb586 !important;
+}
+
+.reservation.container {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  background-color: #f4f4f4;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.reservation__description {
+  width: 100%;
+  max-width: 700px;
+  color: #323232;
+  margin: 0px 30px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.reservation__description .welcome {
+  margin: 30px 0;
+  position: relative;
+}
+.reservation__description .welcome::before {
+  content: "WELCOME";
+  font-family: "Playfair Display", serif;
+  font-size: 150px;
+  font-weight: 500;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+}
+@media only screen and (max-width: 1025px) {
+  .reservation__description .welcome::before {
+    display: none;
+  }
+}
+.reservation__description .welcome .welcome-title {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+.reservation__description .welcome .welcome-small-title {
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+}
+.reservation__description .svg_divider {
+  margin: 10px 0;
+}
+.reservation__description .description-title {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 27px 0 13px;
+}
+.reservation__description .description-p {
+  margin-bottom: 20px;
+}
+.reservation__description .avatar img {
+  height: auto;
+  border-radius: 50%;
+}
+.reservation__description .avatar-intro {
+  margin: 10px;
+}
+
+.reservation__cards {
+  background-color: transparent;
+  max-width: 1200px;
+  display: flex;
+  gap: 2rem;
+}
+@media only screen and (max-width: 769px) {
+  .reservation__cards {
+    flex-direction: column;
+  }
+}
+.reservation__cards .card {
+  color: white;
+  text-align: left;
+  position: relative;
+  margin: 5px;
+  flex-basis: 100%;
+  cursor: pointer;
+  transition: all 0.001s ease-out;
+}
+.reservation__cards .card .logo {
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+}
+.reservation__cards .card .banner {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.reservation__cards .card .hoverbox-title {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 5;
+  bottom: 20px;
+  left: 20px;
+  max-width: 100%;
+  height: auto;
+  transition: 200ms ease;
+}
+.reservation__cards .card .hoverbox-overlay {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: height 300ms ease;
+}
+.reservation__cards .card .hoverbox-overlay p {
+  margin: 20px;
+  position: absolute;
+  top: 90%;
+  left: 0;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.reservation__cards .card:hover .hoverbox-overlay {
+  height: 100%;
+  opacity: 1;
+}
+.reservation__cards .card:hover .hoverbox-title {
+  bottom: 70px;
+  opacity: 0;
+}
+
+.reservation__bottom-container {
+  width: 100%;
+  position: relative;
+}
+
+.reservation__bottom {
+  width: 100%;
+  background-position: center center;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), #f4f4f4), url(./../Photos/reservation/home-banner-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 90px 20px;
+}
+.reservation__bottom .description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reservation__bottom .description-title {
+  margin-top: 50px;
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+.reservation__bottom .description .svg_divider {
+  margin: 20px 0;
+}
+.reservation__bottom .description-p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  margin-bottom: 24px;
+}
+.reservation__bottom .overlay-button {
+  position: relative;
+  display: inline-block;
+}
+.reservation__bottom .overlay-button button {
+  cursor: pointer;
+  color: black;
+  border: 1px solid black;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s;
+}
+.reservation__bottom .overlay-button button:hover {
+  color: white;
+}
+.reservation__bottom .overlay-button div {
+  background-color: black;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  transition: all 0.5s;
+}
+.reservation__bottom .overlay-button:hover div {
+  height: 100%;
+}
+.reservation__bottom .overlay-button button {
+  padding: 8px 24px;
+}
+
+.second-carousel {
+  position: relative;
+  background-color: #111118;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.second-carousel .slider {
+  width: 90%;
+  max-width: 1100px;
+}
+.second-carousel .wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.second-carousel .slides {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: -100%;
+}
+.second-carousel .slides.shifting {
+  transition: left 0.2s ease-out;
+}
+.second-carousel .slide {
+  position: relative;
+  flex-basis: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s;
+  background: #171720;
+}
+@media only screen and (max-width: 769px) {
+  .second-carousel .slide {
+    flex-direction: column;
+  }
+}
+.second-carousel .room-info {
+  flex-basis: 50%;
+}
+.second-carousel .room-info a {
+  text-decoration: none;
+  color: inherit;
+}
+@media only screen and (max-width: 769px) {
+  .second-carousel .room-info {
+    order: 2;
+  }
+}
+.second-carousel .room-img {
+  padding-right: 5px;
+  flex-basis: 50%;
+}
+.second-carousel .room-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.second-carousel .indicators {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.second-carousel .indicators .indicators__dot span {
+  margin: 5px 7px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #d6d6d6;
+  border-radius: 50%;
+}
+.second-carousel .indicators .indicators__dot span:hover {
+  cursor: pointer;
+  background-color: #869791;
+}
+
+.second-carousel {
+  color: white;
+}
+.second-carousel .room-info {
+  padding: 20px;
+}
+.second-carousel .room-info .title {
+  font-family: "Playfair Display", serif;
+  font-size: 29px;
+  font-weight: 700;
+}
+.second-carousel .room-info .title:hover {
+  cursor: pointer;
+  color: #6fb586;
+}
+.second-carousel .room-info .subtitle {
+  margin-bottom: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+}
+.second-carousel .room-info .exerpt {
+  margin: 30px 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+}
+.second-carousel .room-info .read-more {
+  color: #6fb586;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+.second-carousel .room-info .icons {
+  margin: 30px 0;
+}
+.second-carousel .room-info .icons * {
+  font-size: 12px;
+  padding: 13px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.144);
+}
+
+.testimonials {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #f4f4f4;
+}
+
+.testimonials__description {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.testimonials__description .title {
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+.testimonials__description .subtitle {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+}
+.testimonials__description svg {
+  margin: 20px;
+}
+
+.third-carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.third-carousel .slider {
+  width: 60%;
+}
+.third-carousel .wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.third-carousel .slides {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: -100%;
+}
+.third-carousel .slides.shifting {
+  transition: left 0.2s ease-out;
+}
+.third-carousel .slide {
+  position: relative;
+  flex-basis: 100%;
+  flex-shrink: 0;
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  transition: all 0.5s;
+}
+@media only screen and (max-width: 769px) {
+  .third-carousel .slide {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.third-carousel .slide .avatar img {
+  border-radius: 50%;
+  width: 100px;
+  height: auto;
+}
+.third-carousel .slide .quote h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+.third-carousel .slide .quote p {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 200;
+}
+.third-carousel .indicators {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.third-carousel .indicators .indicators__dot span {
+  margin: 5px 7px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #d6d6d6;
+  border-radius: 50%;
+}
+.third-carousel .indicators .indicators__dot span:hover {
+  cursor: pointer;
+  background-color: #869791;
+}
+
+footer {
+  background-color: #15151e;
+  color: #fdfdfd;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.footer-widgets {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-widgets .logo img {
+  width: 120px;
+  height: auto;
+}
+.footer-widgets .contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.footer-widgets .contact-info__child {
+  display: flex;
+  align-items: center;
+  border-color: rgba(253, 253, 253, 0.1);
+}
+.footer-widgets .contact-info .icon {
+  padding: 15px;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.377);
+  border-radius: 50%;
+}
+.footer-widgets .contact-info .icon.fa-location-arrow:hover {
+  cursor: pointer;
+  background-color: #6fb586;
+}
+.footer-widgets .skype-link {
+  color: rgba(255, 255, 255, 0.377);
+  margin-top: 30px;
+}
+
+.footer-bar {
+  padding: 5px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 769px) {
+  .footer-bar {
+    flex-direction: column;
+  }
+}
+.footer-bar > div {
+  flex-basis: 33%;
+}
+.footer-bar .logo {
+  text-align: center;
+}
+.footer-bar .logo img {
+  width: 120px;
+  height: auto;
+}
+.footer-bar .footer-menu ul {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+@media only screen and (max-width: 769px) {
+  .footer-bar .footer-menu ul {
+    text-align: center;
+  }
+}
+.footer-bar .footer-menu ul li:hover {
+  color: #6fb586;
+}
+
+/*# sourceMappingURL=style.css.map */

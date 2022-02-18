@@ -1,0 +1,134 @@
+$black-section: #111118;
+$dark-section: #171720;
+$indicator-dots: #d6d6d6;
+$indicator-dots-selected: #869791;
+$carousel-text-color: white;
+$icon-border: white;
+$font-source-sans: 'Source Sans Pro', sans-serif;
+$font-Playfair: 'Playfair Display', serif;
+$hover-green: #6fb586;
+
+@import './mixin';
+
+.second-carousel {
+    position: relative;
+    background-color: $black-section;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .slider {
+        width: 90%;
+        max-width: 1100px;
+    }
+
+    .wrapper {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+    
+    .slides {
+        display: flex;
+        position: relative;
+        top: 0;
+        left: -100%;
+    }
+    
+    .slides.shifting {
+        transition: left .2s ease-out;
+    }
+    
+    .slide {
+        position: relative;
+        flex-basis: 100%;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        transition: all 0.5s;
+        background: $dark-section;
+        @include respond("tablet") {
+            flex-direction: column;
+        }
+    }
+    
+    .room-info {
+        flex-basis: 50%;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        @include respond("tablet") {
+            order: 2;
+        }
+    }
+    .room-img {
+        padding-right: 5px;
+        flex-basis: 50%;
+    
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    .indicators {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    
+        .indicators__dot span {
+            margin: 5px 7px;
+            display: block;
+            width: 10px; height: 10px;
+            background-color: $indicator-dots;
+            border-radius: 50%;
+    
+            &:hover {
+                cursor: pointer;
+                background-color: $indicator-dots-selected;
+            }
+        }
+    }
+}
+
+.second-carousel {
+    color: $carousel-text-color;
+    .room-info {
+        padding: 20px;
+        .title {
+            @include font-settings(29px, $font-Playfair, 700);
+            &:hover {
+                cursor: pointer;
+                color: $hover-green;
+            }
+        }
+        .subtitle {
+            margin-bottom: 10px;
+            @include font-settings(13px, $font-source-sans, 200);
+        }
+
+        .exerpt {
+            margin: 30px 0;
+            @include font-settings(16px, $font-source-sans, 200);
+        }
+        .read-more {
+            color: $hover-green;
+            @include font-settings(13px, $font-source-sans, normal);
+        }
+
+        .icons  {
+            margin: 30px 0;
+            *{
+                font-size: 12px;
+                padding: 13px;
+                border-radius: 50%;
+                border: 1px solid rgba($icon-border, 0.144);
+            }
+        }
+    }
+}

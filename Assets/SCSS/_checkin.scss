@@ -1,0 +1,171 @@
+$black-color: black;
+$white-color: white;
+$dark-color: #111118;
+$check-in-color: white;
+$button-back-color: #666666;
+$odd-rows: rgb(238, 238, 238);
+$button-back-color-hover: #323232;
+$table-border: #ddd;
+$hr-color: rgb(228, 228, 228);
+$font-source-sans: 'Source Sans Pro', sans-serif;
+$font-Playfair: 'Playfair Display', serif;
+$inputbox-bg-color: #1F1F2C;
+$hover-green: #6fb586;
+$gold-gradient: linear-gradient(left, #8f6B29, #FDE08D, #DF9F28);
+$warning: rgb(247, 91, 91);
+
+@import './mixin';
+
+
+.reservation__check-in {
+    color: $check-in-color;
+    position: relative;
+    padding: 40px 40px;
+    top: -50px;
+    z-index: 6;
+    background-color: $dark-color;
+    width: 100%;
+    max-width: 1200px;
+    @include respond("desktop") {
+        padding: 40px 0;
+    }
+}
+
+// input box and submit
+#form {
+    text-align: center;
+    .direct-div {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+
+        @include respond("desktop") {
+            flex-direction: column;
+        }
+    }
+    .inputbox {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 40%;
+        @include respond("desktop") {
+            flex-shrink: 0;
+            flex-basis: 100%;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input {
+            color: $white-color;
+            padding: 28px 24px;
+            border: 2px solid $inputbox-bg-color;
+            background-color: $inputbox-bg-color;
+            transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+        }
+    }
+    .error {
+        display: none;
+        color: $warning;
+        margin-top: 20px;
+    }
+
+    .overlay-button {
+        margin: 50px 0 10px;
+        @include overlay-button-hover-second($hover-green, transparent, $white-color);
+    }
+
+    #submit {
+        padding: 12px 32px;
+    }
+}
+
+
+// modal appearance
+.modal-container {
+    @include font-settings(16, $font-source-sans, 500);
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgba($black-color, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s ease;
+    &.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.modal-content {
+    color: $black-color;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-color: $check-in-color;
+    width: 600px;
+    max-width: 90%;
+    .modal-header {
+        display: flex;
+        padding: 15px 10px;
+        justify-content: space-between;
+    }
+    .modal-body {
+        padding: 25px 20px;
+    }
+    hr {
+        border: none;
+        height: 1px;
+        background-color: $hr-color;
+    }
+
+    .close-button {
+        position: relative;
+        cursor: pointer;
+        padding: 10px;
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            background-color: $button-back-color;
+            width: 1.3px;
+            height: 1.5rem;
+            left: 50%;
+            top: 50%;
+        }
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        &:hover::before, &:hover::after{
+            background-color: $button-back-color-hover;
+        }
+    }
+}
+
+// table
+.modal #rooms-table {
+    border-collapse: collapse;
+    width: 100%;
+    td, th {
+        border: 1px solid $table-border;
+        padding: 8px;
+    }
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: $dark-color;
+        color: $white-color;
+    }
+
+    tr.available {
+        color: $white-color !important;
+        background-color: $hover-green !important;
+    }
+}
