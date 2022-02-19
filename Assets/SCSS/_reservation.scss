@@ -1,15 +1,9 @@
-$black-color: black;
-$light-color: #f4f4f4;
-$dark-color: #111118;
-$dark-font-color: #323232;
-$font-source-sans: 'Source Sans Pro', sans-serif;
-$font-Playfair: 'Playfair Display', serif;
-
+@import './variables';
 @import './mixin';
 
 .reservation.container {
     @include font-settings();
-    background-color: $light-color;
+    background-color: map-get($color-palette, 'light-2');
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -24,7 +18,7 @@ $font-Playfair: 'Playfair Display', serif;
     padding-left: 15px; padding-right: 15px;
     width: 100%;
     max-width: 700px;
-    color: $dark-font-color;
+    color: map-get($color-palette, 'mid-tone-3');
     margin: 0px 30px 30px;
     text-align: center;
     display: flex;
@@ -80,6 +74,8 @@ $font-Playfair: 'Playfair Display', serif;
 // cards
 .reservation__cards {
     background-color: transparent;
+    padding-left: 15px; padding-right: 15px;
+    width: 100%;
     max-width: 1200px;
     display: flex;
     gap: 2rem;
@@ -88,10 +84,10 @@ $font-Playfair: 'Playfair Display', serif;
     }
 
     .card {
-        color: white;
+        padding: 0;
+        color: map-get($color-palette, 'white');
         text-align: left;
         position: relative;
-        margin: 5px;
         flex-basis: 100%;
         cursor: pointer;
         transition: all 0.001s ease-out;
@@ -116,7 +112,7 @@ $font-Playfair: 'Playfair Display', serif;
     
     .card {
         .hoverbox-title {
-            @include font-settings(20px, $font-Playfair, 700);
+            @include font-settings(30px, $font-Playfair, 700);
             white-space: nowrap;
             position: absolute;
             z-index: 5;
@@ -128,9 +124,7 @@ $font-Playfair: 'Playfair Display', serif;
         .hoverbox-overlay {
             position: absolute;
             opacity: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background-color: rgba($color: #000000, $alpha: .5);
             overflow: hidden;
             width: 100%;
@@ -189,7 +183,7 @@ $font-Playfair: 'Playfair Display', serif;
         }
     }
     .overlay-button {
-        @include overlay-button-hover-second($black-color, transparent, $white-color);
+        @include overlay-button-hover-second(map-get($color-palette, 'black'), transparent, map-get($color-palette, 'white'));
         button {
             padding: 8px 24px;
         }

@@ -1,10 +1,9 @@
 $(function(){
     var sliderItems = $('#first-carousel__slides'),
         prevArrow = $('#left-arrow'),
-        nextArrow = $('#right-arrow'),
-        animations = $('#first-carousel__slides .overlay-button');
+        nextArrow = $('#right-arrow');
 
-    function slidingCarouselOne(items, prev, next, description) {
+    function slidingCarouselOne(items, prev, next) {
         var slides = items.find('.slide'),
             slidesLength = slides.length,
             slideSize = items.find(".slide").width(),
@@ -18,7 +17,6 @@ $(function(){
             intervalID,
             allowShift = true,
             firstSlide = $(slides[0]).clone(),
-            animationTransition = false,
             lastSlide = $(slides[slidesLength-1]).clone();
         
         items.append(firstSlide)
@@ -47,18 +45,14 @@ $(function(){
         next.click(function () { shiftSlide(1) });
 
         // transition detection for checking the last slide and make a loop
-        sliderItems.on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', (e)=>{
-            if (animationTransition == false) {
-                checkIndex()
+        sliderItems.on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(e) {
+            if (e.target == this) {
+                checkIndex();
             }
         });
-        description.on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', (e)=>{
-            animationTransition = true;
-        });
-
 
         function dragStart (e) {
-            clearInterval(intervalID)
+            clearInterval(intervalID);
 
             e = e || window.event;
             e.preventDefault();
@@ -108,7 +102,7 @@ $(function(){
             items.addClass('shifting');
             
             if (allowShift) {
-                animationTransition = false;
+
                 if (!action) {
                     posInitial = items.offset().left; 
                 }
@@ -154,5 +148,5 @@ $(function(){
         });
     }
 
-    slidingCarouselOne(sliderItems, prevArrow, nextArrow, animations)
+    slidingCarouselOne(sliderItems, prevArrow, nextArrow)
 });

@@ -1,12 +1,4 @@
-$white-color: white;
-$black-color: black;
-$black-section: #111118;
-$dark-section: #171720;
-$indicator-dots: #d6d6d6;
-$indicator-dots-selected: #869791;
-$font-source-sans: 'Source Sans Pro', sans-serif;
-$font-Playfair: 'Playfair Display', serif;
-
+@import './variables';
 @import './mixin';
 
 .first-carousel {
@@ -84,7 +76,7 @@ $font-Playfair: 'Playfair Display', serif;
 
 
 .first-carousel .slide-info{
-    color: $white-color;
+    color: map-get($map: $color-palette, $key: "white");
     .t2 {
         @include font-settings(14px, $font-Playfair, 300);
         @include respond("tablet") {
@@ -103,7 +95,7 @@ $font-Playfair: 'Playfair Display', serif;
     }
     .overlay-button {
         @include font-settings(13px, $font-Playfair, 400);
-        @include overlay-button-hover-second($white-color, transparent, $black-color);
+        @include overlay-button-hover-second(map-get($color-palette, "white"), transparent, map-get($color-palette, "black"));
         cursor: pointer;
         button {
             padding: 8px 24px;

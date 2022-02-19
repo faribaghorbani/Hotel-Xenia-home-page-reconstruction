@@ -9,4 +9,14 @@ $(function(){
         // side-bar menu opening and moving to left
         $(".sidebar-menu").toggleClass("open")
     });
+
+    $('.scroll-back').hide();
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() == 0) {
+            $('.scroll-back').hide(100);
+        } else {
+            $('.scroll-back').show(100);
+        }
+    });
 });

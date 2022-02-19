@@ -1,14 +1,9 @@
-$footer-bg-color: #15151e;
-$footer-color: #fdfdfd;
-$font-source-sans: 'Source Sans Pro', sans-serif;
-$font-Playfair: 'Playfair Display', serif;
-$hover-green: #6fb586;
-
+@import './variables';
 @import './mixin';
 
 footer {
-    background-color: $footer-bg-color;
-    color: $footer-color;
+    background-color: map-get($color-palette, 'dark-3');
+    color: map-get($color-palette, 'light-1');
     @include font-settings($font-size: 16px);
 }
 .footer-widgets{
@@ -41,7 +36,7 @@ footer {
             border-radius: 50%;
             &.fa-location-arrow:hover {
                 cursor: pointer;
-                background-color: $hover-green;
+                background-color: map-get($color-palette, 'green');
             }
         }
     }
@@ -81,7 +76,7 @@ footer {
             justify-content: center;
         }
         li:hover {
-            color: $hover-green;
+            color: map-get($color-palette, 'green');
         }
     }
 }

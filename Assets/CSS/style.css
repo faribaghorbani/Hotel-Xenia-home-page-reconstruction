@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -175,7 +179,8 @@ ul li a {
 
 .sidebar-menu {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14;
+  font-size: 14px;
+  font-weight: 200;
   color: white;
   background-color: black;
   padding: 20px 25px 0 25px;
@@ -216,19 +221,22 @@ ul li a {
 
 .sidebar.seperator {
   position: relative;
-  background-color: rgba(221, 221, 221, 0.4);
+  background-color: #666666;
   height: 1px;
   width: 100%;
   margin: 28px 0;
 }
 
 .sidebar-contact-info {
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 13px;
   font-weight: 200;
   margin: 20px 0;
 }
 .sidebar-contact-info .contact-info {
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
+  font-weight: 200;
   margin: 10px;
   display: flex;
   justify-content: flex-start;
@@ -313,10 +321,20 @@ ul li a {
 }
 .dropdown-owner .dropdown li {
   white-space: nowrap;
-  margin: 20px 20px;
+  margin: 8px 10px;
 }
 .dropdown-owner .dropdown li a {
   display: inline-block;
+}
+.dropdown-owner .dropdown.more span {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-block;
+  margin-left: 5px;
+  background-color: #f75b5b;
+  border-radius: 3px;
+  padding: 1px 5px;
 }
 .dropdown-owner:hover .dropdown, .dropdown-owner .arrow-down:hover .dropdown, .dropdown-owner .dropdown:hover {
   display: block;
@@ -349,6 +367,37 @@ ul li a {
 }
 .main-content.move {
   transform: translate(-320px);
+}
+
+.scroll-back {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  bottom: 75px;
+  right: 25px;
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all 0.5s ease;
+}
+.scroll-back .arrow-up {
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  position: relative;
+}
+.scroll-back:hover {
+  cursor: pointer;
+  background-color: black;
+}
+.scroll-back:hover .arrow-up {
+  top: -2px;
 }
 
 .first-carousel {
@@ -507,9 +556,12 @@ ul li a {
 }
 
 #form {
+  width: 100%;
   text-align: center;
 }
 #form .direct-div {
+  width: 100%;
+  padding: 10px;
   display: flex;
   gap: 2rem;
   justify-content: center;
@@ -527,19 +579,18 @@ ul li a {
 }
 @media only screen and (max-width: 1025px) {
   #form .inputbox {
-    flex-shrink: 0;
-    flex-basis: 100%;
+    width: 100%;
   }
 }
 #form .inputbox label {
   margin-bottom: 10px;
 }
 #form .inputbox input {
+  width: 100%;
   color: white;
   padding: 28px 24px;
   border: 2px solid #1F1F2C;
   background-color: #1F1F2C;
-  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
 }
 #form .error {
   display: none;
@@ -623,7 +674,7 @@ ul li a {
 .modal-content hr {
   border: none;
   height: 1px;
-  background-color: #e4e4e4;
+  background-color: #d6d6d6;
 }
 .modal-content .close-button {
   position: relative;
@@ -654,7 +705,7 @@ ul li a {
   width: 100%;
 }
 .modal #rooms-table td, .modal #rooms-table th {
-  border: 1px solid #ddd;
+  border: 1px solid #d6d6d6;
   padding: 8px;
 }
 .modal #rooms-table th {
@@ -746,6 +797,9 @@ ul li a {
 
 .reservation__cards {
   background-color: transparent;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
   max-width: 1200px;
   display: flex;
   gap: 2rem;
@@ -756,10 +810,10 @@ ul li a {
   }
 }
 .reservation__cards .card {
+  padding: 0;
   color: white;
   text-align: left;
   position: relative;
-  margin: 5px;
   flex-basis: 100%;
   cursor: pointer;
   transition: all 0.001s ease-out;
@@ -780,7 +834,7 @@ ul li a {
 }
 .reservation__cards .card .hoverbox-title {
   font-family: "Playfair Display", serif;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   white-space: nowrap;
   position: absolute;
@@ -1057,7 +1111,7 @@ ul li a {
   align-items: center;
 }
 .third-carousel .slider {
-  width: 60%;
+  width: 50%;
 }
 @media only screen and (max-width: 769px) {
   .third-carousel .slider {
@@ -1106,10 +1160,23 @@ ul li a {
   font-size: 19px;
   font-weight: 700;
 }
-.third-carousel .slide .quote p {
+.third-carousel .slide .quote .text {
   font-family: "Playfair Display", serif;
   font-size: 18px;
   font-weight: 200;
+}
+.third-carousel .slide .quote .name {
+  margin-top: 15px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.third-carousel .slide .quote .name span {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+  font-style: italic;
+  padding: 5px;
 }
 .third-carousel .indicators {
   margin-top: 30px;

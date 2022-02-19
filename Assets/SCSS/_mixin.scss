@@ -7,7 +7,7 @@
 @mixin green-line-hover {
     content: "";
     position: absolute;
-    background-color: $green;
+    background-color: map-get($color-palette, 'green');
     height: 1px;
     width: 0;
     border-radius: 1px;
@@ -16,6 +16,7 @@
     transition: width 0.5s ease-out;
 }
 
+// overlay button type 1
 @mixin overlay-button-hover-first ($background-color, $font-color) {
     cursor: pointer;
     background-size: 100% 200%;
@@ -29,6 +30,7 @@
     }
 }
 
+// overlay button type 1
 @mixin overlay-button-hover-second ($new-background-color, $old-background-color, $new-font-color) {
     position: relative;
     display: inline-block;

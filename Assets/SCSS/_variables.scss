@@ -1,53 +1,21 @@
+$color-palette: (
+    "white": white,
+    "black": black,
+    "light-1": #fdfdfd,
+    "light-2": #f4f4f4,
+    "light-3": #d6d6d6,
+    "mid-tone-1": #869791,
+    "mid-tone-2": #666666,
+    "mid-tone-3": #323232, 
+    "dark-1": #171720,
+    "dark-2": #111118,
+    "dark-3": #15151e,
+    "green": #6fb586,
+    "danger": rgb(247, 91, 91),
+    "warning": #c5bc58,
+    "dark-blue": #1F1F2C
+);
+
+
 $font-source-sans: 'Source Sans Pro', sans-serif;
 $font-Playfair: 'Playfair Display', serif;
-
-// carousel1
-$white-color: white;
-$black-color: black;
-$darker-color: #111118;
-$dark-section: #171720;
-$indicator-dots: #d6d6d6;
-$indicator-dots-selected: #869791;
-
-
-// carousel2
-$indicator-dots: #d6d6d6;
-$indicator-dots-selected: #869791;
-$carousel-text-color: white;
-$icon-border: white;
-$hover-green: #6fb586;
-
-// carousel3
-$light-color: #f4f4f4;
-
-// checkin
-$dark-color: #111118;
-$check-in-color: white;
-$button-back-color: #666666;
-$odd-rows: rgb(238, 238, 238);
-$button-back-color-hover: #323232;
-$table-border: #ddd;
-$hr-color: rgb(228, 228, 228);
-$inputbox-bg-color: #1F1F2C;
-$hover-green: #6fb586;
-$gold-gradient: linear-gradient(left, #8f6B29, #FDE08D, #DF9F28);
-$warning: rgb(247, 91, 91);
-
-// menu
-$white-color: white;
-$black-color: black;
-$green: #6fb586;
-$menu-font: 'Source Sans Pro', sans-serif;
-$seperator-color: rgba(221,221,221,0.4);
-$book-now-button: #c5bc58;
-
-// reservation
-$black-color: black;
-$light-color: #f4f4f4;
-$dark-color: #111118;
-$dark-font-color: #323232;
-
-// footer
-$footer-bg-color: #15151e;
-$footer-color: #fdfdfd;
-$hover-green: #6fb586;

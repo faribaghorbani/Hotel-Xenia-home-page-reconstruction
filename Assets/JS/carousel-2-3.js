@@ -3,12 +3,11 @@ var sliderItemsTwo = document.getElementById('second-carousel__slides'),
     sliderItemsThree = document.getElementById('third-carousel__slides'),
     indicatorsThree = Array.from(document.querySelectorAll('.third-carousel .indicators__dot span'));
 
-function slide(items, indicators) {
+function slide(items, indicators, threshold) {
     var posX1 = 0,
         posX2 = 0,
         posInitial,
         posFinal,
-        threshold = 100,
         slides = items.getElementsByClassName('slide'),
         slidesLength = slides.length,
         slideSize = items.getElementsByClassName('slide')[0].offsetWidth,
@@ -168,5 +167,5 @@ function slide(items, indicators) {
     
 }
 
-slide(sliderItemsTwo, indicatorsTwo);
-slide(sliderItemsThree, indicatorsThree);
+slide(sliderItemsTwo, indicatorsTwo, 100);
+slide(sliderItemsThree, indicatorsThree, 30);
