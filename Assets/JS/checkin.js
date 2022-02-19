@@ -1,28 +1,46 @@
 $(function(){
-    // set minimum for input type date
+    // set current time as minimum for input type date
+
     let nowTime = new Date().toISOString().split("T")[0];
     $(".input-date").attr("min", nowTime)
 
     // check validity
-    let validation = true;
     $("#form").submit(function(event) {
-        $(".error").css("display", "none");
         event.preventDefault();
+        
+        $(".error").css("display", "none");
         $("#tbody").html("")
+        
+        // check form validation based on 
+        let validation = true;
+        $(".inputbox input").each(function() {
+            if ($(this).val() == "") {
+                validation = false;
+                $(".error").text("some information are missed");
+            }
+        })
 
-        if ($(".inputbox input").val() == "") {
-            console.log("khali")
-            validation = false;
-        }
-        if ($(".inputbox input").val() != ""){
-            validation = true;
+        if (validation == true) {
             let checkInDate = new Date($("#check-in-date").val());
             let checkOutDate = new Date($("#check-out-date").val());
             if (checkOutDate < checkInDate) {
-                console.log("bozorg")
                 validation = false;
+                $(".error").text("the departure date is before arrival date");
             }
         }
+
+        // if ($(".inputbox input").val() == "") {
+        //     console.log("khali")
+        //     validation = false;
+        // }
+        // if (validation){
+        //     let checkInDate = new Date($("#check-in-date").val());
+        //     let checkOutDate = new Date($("#check-out-date").val());
+        //     if (checkOutDate < checkInDate) {
+        //         console.log("bozorg")
+        //         validation = false;
+        //     }
+        // }
         if (validation==true) {
             requestToFile()
         } else {

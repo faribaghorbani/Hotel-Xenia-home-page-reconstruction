@@ -1,10 +1,9 @@
 $(function(){
     var sliderItems = $('#first-carousel__slides'),
         prevArrow = $('#left-arrow'),
-        nextArrow = $('#right-arrow'),
-        animations = $('#first-carousel__slides .overlay-button');
+        nextArrow = $('#right-arrow');
 
-    function slidingCarouselOne(items, prev, next, description) {
+    function slidingCarouselOne(items, prev, next) {
         var slides = items.find('.slide'),
             slidesLength = slides.length,
             slideSize = items.find(".slide").width(),
@@ -18,7 +17,7 @@ $(function(){
             intervalID,
             allowShift = true,
             firstSlide = $(slides[0]).clone(),
-            animationTransition = false,
+            flag = true,
             lastSlide = $(slides[slidesLength-1]).clone();
         
         items.append(firstSlide)
@@ -43,19 +42,12 @@ $(function(){
         sliderItems.on("touchend", dragEnd)
 
         // next-prev icons
-        prev.click(function () { shiftSlide(-1) });
-        next.click(function () { shiftSlide(1) });
+        prev.click(function () {shiftSlide(-1)});
+        next.click(function () {shiftSlide(1)});
 
-        // transition detection for checking the last slide and make a loop
-        sliderItems.on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', (e)=>{
-            if (animationTransition == false) {
-                checkIndex()
-            }
-        });
-        description.on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', (e)=>{
-            animationTransition = true;
-        });
-
+        // transition
+        sliderItems.on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd',
+        checkIndex);
 
         function dragStart (e) {
             clearInterval(intervalID)
@@ -73,7 +65,6 @@ $(function(){
             }
         }
 
-
         function dragAction (e) {
             e = e || window.event;
             
@@ -88,8 +79,10 @@ $(function(){
             items.css("left", `${items.offset().left - posX2}px`);
         }
 
-
         function dragEnd (e) {
+            intervalID = setInterval(()=>{
+                shiftSlide(1)
+            }, 5000)
             posFinal = items.offset().left;
             if (posFinal - posInitial < -threshold) {
                 shiftSlide(1, 'drag');
@@ -102,13 +95,10 @@ $(function(){
             document.onmousemove = null;
         }
 
-
         function shiftSlide(dir, action) {
-            clearInterval(intervalID);
             items.addClass('shifting');
             
             if (allowShift) {
-                animationTransition = false;
                 if (!action) {
                     posInitial = items.offset().left; 
                 }
@@ -123,10 +113,6 @@ $(function(){
                 }
             };
             allowShift = false;
-
-            intervalID = setInterval(()=>{
-                shiftSlide(1)
-            }, 5000)
         }
 
         function checkIndex (){
@@ -154,5 +140,5 @@ $(function(){
         });
     }
 
-    slidingCarouselOne(sliderItems, prevArrow, nextArrow, animations)
+    slidingCarouselOne(sliderItems, prevArrow, nextArrow)
 });

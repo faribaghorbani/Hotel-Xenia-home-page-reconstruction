@@ -21,6 +21,7 @@ $font-Playfair: 'Playfair Display', serif;
 
 // hotel introduction
 .reservation__description {
+    padding-left: 15px; padding-right: 15px;
     width: 100%;
     max-width: 700px;
     color: $dark-font-color;

@@ -92,21 +92,21 @@ $font-Playfair: 'Playfair Display', serif;
         }
     }
     .t1 {
-        @include font-settings(64px, $font-Playfair, 700);
+        @include font-settings(60px, $font-Playfair, 700);
 
         @include respond("tablet") {
-            @include font-settings(46px, $font-Playfair, 700)
+            @include font-settings(45px, $font-Playfair, 700)
         }
         @include respond("mobile") {
-            @include font-settings(30px, $font-Playfair, 700)
+            @include font-settings(35px, $font-Playfair, 700)
         }
     }
     .overlay-button {
         @include font-settings(13px, $font-Playfair, 400);
+        @include overlay-button-hover-second($white-color, transparent, $black-color);
         cursor: pointer;
-        padding: 8px 24px;
-        border: 1px solid $white-color;
-        background-color: transparent;
-        color: $white-color;
+        button {
+            padding: 8px 24px;
+        }
     }
 }

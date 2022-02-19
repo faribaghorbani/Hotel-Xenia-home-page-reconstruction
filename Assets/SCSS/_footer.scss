@@ -72,13 +72,13 @@ footer {
         }
     }
     .footer-menu ul{
-        text-align: right;
         display: flex;
         justify-content: flex-end;
         flex-wrap: wrap;
         gap: 0.5rem;
         @include respond("tablet") {
             text-align: center;
+            justify-content: center;
         }
         li:hover {
             color: $hover-green;

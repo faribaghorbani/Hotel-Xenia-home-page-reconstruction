@@ -35,9 +35,15 @@ ul li {
 
     .logo  {
         margin-left: 20px;
+        @include respond("mobile") {
+            margin-left: 10px;
+        }
         img {
             width: 100px;
-            height: 50px;
+            height: auto;
+            @include respond("mobile") {
+                width: 60px;
+            }
         }
     }
     .main-navbar-items {
@@ -49,15 +55,12 @@ ul li {
         gap: 2rem;
         @include respond("extra") {
             padding: 1px;
-            gap: 0.5rem;
+            gap: 0.1rem;
         }
         @include respond("desktop") {
             display: none;
         }
         li {
-            @include respond("desktop") {
-                padding: 1px 10px;
-            }
             padding: 5px 10px;
             position: relative;
         }
@@ -74,14 +77,13 @@ ul li {
             z-index: 10;
             background-color: $book-now-button;
             @include overlay-button-hover-first ($white-color, $book-now-button);
-            margin-right: 15px;
-            padding: 8px 24px;
+            margin-right: 0px;
+            padding: 5px 20px;
         }
     }
 }
 
 .sidebar-toggler {
-    margin-left: 15px;
     padding: 8px 20px;
     position: relative;
     z-index: 10;
